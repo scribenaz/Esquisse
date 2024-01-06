@@ -1,0 +1,196 @@
+---
+title: 'Esquisse: A Simple Plotting Tool For Beginners'
+author: "Shriver Smith"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    df_print: paged
+    highlight: tango
+    theme: readable
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
+---
+
+```{r include = FALSE}
+
+# SET GLOBAL KNITR OPTIONS
+
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.width = 10, 
+                      fig.height = 8)
+
+# LOAD PACKAGES
+
+library(pander)
+library(kableExtra)
+library(ggplot2)
+
+```
+
+<br>
+<br>
+
+# Introduction
+
+This code through explores the *Equisse* package.Equisse is a package that makes building plots easy without having to write the code. Equisse is easy to use and offer a variety of functions to play around with to create an informative plot that is also eye catching.
+
+<br>
+
+## Content Overview
+
+Specifically, we'll explain and demonstrate how to install equisse, how to use it while writing your program, and then copying the code to put into your program to run. First off, we should install the equisse package and load it in our library. Esquisse also runs off ggplot2 so we should install that if you do not already have it and save it into your library as well.
+
+```{r}
+
+# Installing equisse
+# install.packages("esquisse")
+
+# Load the package into our library
+library(esquisse)
+
+# Installing ggplot2
+# install.packages("ggplot2")
+
+# Load the package into our library
+library(ggplot2)
+
+```
+
+After the package is installed and saved into our library, we should load a dataset to work with. In this tutorial, we shall be working with the iris dataset.
+```{r}
+
+# Load the dataset
+data(iris)
+
+```
+
+
+<br>
+
+## Why You Should Care
+
+This topic is valuable because for a beginner, it is easy to create plots if one does not have their code writing skills down. It is also a resource to learn how to code by method of reverse engineering as you create the plot first, and when done, you can copy the code into your program. At this point one can view the code and learn how it was created, breaking down the steps in the code and making it easier to learn how to create plots by writing your own code.
+
+<br>
+
+## Learning Objectives
+
+Specifically, you will learn:
+
+1. How to easily create plots without having to write the code.
+2. Learn how plots are created by reverse engineering the plot to analyze the code given by esquisse
+
+
+<br>
+
+# How to Bring up Esquisse in R Studio
+
+There are two ways to bring up esquisse in R. You can either select the ggplot2 builder in the Addins drop down menu at the top of R Studio. Of you can run a line of code as seen below. It is easier to use the Addins drop down menu because if you include the line of code, esquisse will always pop up unless you comment it out after done using. If you're in the process of creating your program and running it along the way to test it, having esquisse always pop up and then having to close it can be problematic.
+
+```{r}
+
+#launches the add-in but should be commented out after using if you are done using and finished with your project and no longer desire to have it run every time you run your program.
+
+# Insert a # in front of the code below if you no longer wish to use, remove # to run the chunk and create a new plot
+
+# esquisse::esquisser()  
+```
+
+# Using Esquisse
+
+When the esquisse window pops up:
+
+1. Select the dataset to work with from the drop down menu
+2. Select variables to keep
+3. Select the "Validate imported data" button
+
+After importing the data, a plot will show up with the selected data in the top of the plot box.
+1. Choose which variables to drag below into the empty X, Y, Fill, Color, Size, Group, Facet, Facet Row, FacetCol boxes.
+2. On the left is a box with AUTO in it, click it to select other plot options like Line, Bar, Histogram plots. If a red circle with a slash appears, it is not an option that can be selected.
+3. Customize the plot with the optional menus below: Labels & Title, Plot Options, Data, Export & Code
+4. Play around with the options and have fun creating new plots to see what this package can really do.
+5. When you are done, select the Export & Code option on the bottom right and you will see the code for your plot which you can copy and paste into your R program.
+
+## Basic Example
+
+A basic example shows the results of an esquisse create plot and the code given back to the user.
+
+```{r}
+
+# Sample of code give back from esquisse to create the plot below
+ggplot(iris) +
+ aes(x = Sepal.Length, y = Sepal.Width, colour = Species) +
+ geom_point(size = 2.92) +
+ scale_color_hue() +
+ theme_minimal()
+```
+
+<br>
+
+## Other Examples
+
+An example of a line chart
+
+```{r}
+
+# Some code
+ggplot(iris) +
+ aes(x = Sepal.Length, y = Sepal.Width) +
+ geom_line(size = 1.18, colour = "#6dcd59") +
+ geom_smooth(span = 0.75) +
+ theme_minimal()
+```
+
+
+
+<br>
+
+An example of an area chart
+
+```{r}
+
+# Some code
+ggplot(iris) +
+ aes(x = Petal.Length, y = Petal.Width, colour = Species) +
+ geom_area(size = 1L) +
+ scale_color_hue() +
+ theme_minimal() +
+ facet_wrap(vars(Petal.Width))
+```
+
+<br> 
+<br>
+
+# Further Resources
+
+Learn more about [package, technique, dataset] with the following:
+
+<br>
+
+* Resource I [8 Useful R packages](https://www.analyticsvidhya.com/blog/2019/04/8-useful-r-packages-data-science/)
+
+* Resource II [Esquisse](https://cran.r-project.org/web/packages/esquisse/readme/README.html)
+
+* Resource III [dreamRs / esquisse](https://github.com/dreamRs/esquisse)
+
+<br>
+<br>
+
+# Works Cited
+
+This code through references and cites the following sources:
+
+<br>
+
+* Spencer Stout (2019). Source I. [Esquisse R package tutorial](https://www.youtube.com/watch?v=WzCyY9CyqUY)
+
+
+
+<br>
+<br>
